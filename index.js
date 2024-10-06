@@ -6,6 +6,12 @@ function validateForm(event) {
     let password = document.forms["my_form"]["form3Example4c"].value;
     let atc = document.forms["my_form"]["form2Example3c"].checked;
 
+    const emailP = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailP.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+    
     const dob1 = new Date(date);
     const age = (Date.now() - dob1.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
 
