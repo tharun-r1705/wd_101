@@ -1,6 +1,5 @@
 function validateForm(event) {
     event.preventDefault();
-    alert("hello");
     let name = document.forms["my_form"]["formName"].value;
     let email = document.forms["my_form"]["formEmail"].value;
     let date = document.forms["my_form"]["formDate"].value;
