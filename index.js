@@ -27,7 +27,7 @@ function validateForm(event) {
     localStorage.setItem("user_entries", JSON.stringify(user_entries));
 
     displayEntries(); // Call displayEntries() to update the table after submission
-    event.target.reset();
+    document.forms["my_form"].reset();
 }
 
 const displayEntries = () => {
