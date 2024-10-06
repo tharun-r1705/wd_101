@@ -1,10 +1,10 @@
 function validateForm(event) {
     event.preventDefault();
-    let name = document.forms["my_form"]["name"].value;
-    let email = document.forms["my_form"]["email"].value;
-    let date = document.forms["my_form"]["dob"].value;
-    let password = document.forms["my_form"]["password"].value;
-    let atc = document.forms["my_form"]["acceptTerms"].checked;
+    let name = document.forms["user-form"]["name"].value;
+    let email = document.forms["user-form"]["email"].value;
+    let date = document.forms["user-form"]["dob"].value;
+    let password = document.forms["user-form"]["password"].value;
+    let atc = document.forms["user-form"]["acceptTerms"].checked;
 
 
     // Date of birth validation (18-55 years old)
