@@ -1,5 +1,6 @@
 function validateForm(event) {
     event.preventDefault();
+    alert("hello");
     let name = document.forms["my_form"]["formName"].value;
     let email = document.forms["my_form"]["formEmail"].value;
     let date = document.forms["my_form"]["formDate"].value;
@@ -35,24 +36,34 @@ function validateForm(event) {
 
 const displayEntries = () => {
     let user_entries = JSON.parse(localStorage.getItem("user_entries")) || [];
-    console.log("Displaying entries: ", user_entries); // Debug: Log the entries to check
+    const tableEntries = user_entries.map((entry) => {
 
-    let tableEntries = user_entries.map((entries) => `
-        <tr>
-            <td scope="row">${entries.name}</td>
-            <td scope="row">${entries.email}</td>
-            <td scope="row">${entries.password}</td>
-            <td scope="row">${entries.date}</td>
-            <td scope="row">${entries.atc ? 'true' : 'false'}</td>
-        </tr>
-    `).join("");
+        const nameCell = `<td class="border px-4 py-2">${entry.name}</td>`;
+        const emailCell = `<td class="border px-4 py-2">${entry.email}</td>`;
+        const passwordCell = `<td class="border px-4 py-2">${entry.password}</td>`;
+        const dobCell = `<td class="border px-4 py-2">${entry.date}</td>`;
+        const acceptTermsCell = `<td class="border px-4 py-2">${entry.atc ? 'true' : 'false'}</td>`;
+      
+        const row = `<tr>${nameCell} ${emailCell} ${passwordCell} ${dobCell} ${acceptTermsCell}</tr>`;
+        
+        return row;
+      }).join("\n");
+
+      const table = `<table class="table-auto w-full"><tr>
+<th class="px-4 py-2">Name</th>
+  <th class="px-4 py-2">Email</th>
+  <th class="px-4 py-2">Password</th>
+  <th class="px-4 py-2">Dob</th>
+  <th class="px-4 py-2">Accepted terms?</th>
+</tr>
+${tableEntries} </table>`;
+
+let details = document.getElementById("user-entries");
+details.innerHTML = table;
    
-    document.getElementById("user-entries").innerHTML = tableEntries;
-    console.log("Table updated!"); // Debug: Check if table update is happening
 }
 
 // Call displayEntries() on page load to display the existing entries
 window.onload = function() {
-    console.log("Page loaded, calling displayEntries...");
     displayEntries();
 };
