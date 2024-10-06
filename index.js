@@ -6,12 +6,6 @@ function validateForm(event) {
     let password = document.forms["my_form"]["formPassword"].value;
     let atc = document.forms["my_form"]["formTerms"].checked;
 
-    // Email validation pattern
-    const emailP = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailP.test(email)) {
-        alert("Please enter a valid email address.");
-        return;
-    }
 
     // Date of birth validation (18-55 years old)
     const dob1 = new Date(date);
