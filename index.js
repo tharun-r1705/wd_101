@@ -1,17 +1,19 @@
 function validateForm(event) {
     event.preventDefault();
-    let name = document.forms["my_form"]["form3Example1c"].value;
-    let email = document.forms["my_form"]["form3Example3c"].value;
-    let date = document.forms["my_form"]["form3Example4cd"].value;
-    let password = document.forms["my_form"]["form3Example4c"].value;
-    let atc = document.forms["my_form"]["form2Example3c"].checked;
+    let name = document.forms["my_form"]["formName"].value;
+    let email = document.forms["my_form"]["formEmail"].value;
+    let date = document.forms["my_form"]["formDate"].value;
+    let password = document.forms["my_form"]["formPassword"].value;
+    let atc = document.forms["my_form"]["formTerms"].checked;
 
-    const emailP = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    // Email validation pattern
+    const emailP = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailP.test(email)) {
         alert("Please enter a valid email address.");
         return;
     }
-    
+
+    // Date of birth validation (18-55 years old)
     const dob1 = new Date(date);
     const age = (Date.now() - dob1.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
 
@@ -20,6 +22,7 @@ function validateForm(event) {
         return;
     }
 
+    // Storing data
     let data = { name, email, password, date, atc };
     let user_entries = JSON.parse(localStorage.getItem("user_entries")) || [];
 
@@ -27,7 +30,7 @@ function validateForm(event) {
     localStorage.setItem("user_entries", JSON.stringify(user_entries));
 
     displayEntries(); // Call displayEntries() to update the table after submission
-    document.forms["my_form"].reset();
+    event.target.reset(); // Clear the form after submission
 }
 
 const displayEntries = () => {
