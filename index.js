@@ -6,7 +6,7 @@ function validateForm(event) {
     let password = document.forms["my_form"]["form3Example4c"].value;
     let atc = document.forms["my_form"]["form2Example3c"].checked;
 
-    const emailP = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailP = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailP.test(email)) {
         alert("Please enter a valid email address.");
         return;
